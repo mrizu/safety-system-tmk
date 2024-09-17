@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import userRoutes from './routes/userRoutes';
+import sitesRoutes from './routes/sitesRoutes'
 
 const app = express();
 const PORT = 4000;
@@ -13,6 +14,7 @@ app.use(cors({
 
 app.use(express.json());
 app.use('/', userRoutes);
+app.use('/', sitesRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
