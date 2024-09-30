@@ -1,10 +1,13 @@
 import { SitesRepository } from "../repositories/SitesRepository";
+import { SystemsRepository } from "../repositories/SystemsRepository";
 
 export class SitesService {
     private sitesRepository: SitesRepository;
+    private systemsRepository: SystemsRepository;
 
-    constructor() {
-        this.sitesRepository = new SitesRepository();
+    constructor(sitesRepository: SitesRepository, systemsRepository: SystemsRepository) {
+        this.sitesRepository = sitesRepository;
+        this.systemsRepository = systemsRepository;
     }
 
     async getSitesInfo() {
@@ -25,5 +28,10 @@ export class SitesService {
         })
 
         return sitesData;
+    }
+
+    async getSiteDetails(siteId: string) {
+        const siteDetails = await this.systemsRepository.getDetailsBySiteId(siteId)
+        return siteDetails
     }
 }

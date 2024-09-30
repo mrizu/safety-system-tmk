@@ -6,6 +6,7 @@ import { client, SECRET_KEY } from '../config';
 
 const router = Router();
 
+//TODO: Move logic to userService
 router.post('/login', async (req: Request, res: Response) => {
     const username = req.body.username;
     const password = req.body.password
